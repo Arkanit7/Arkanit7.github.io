@@ -14,7 +14,7 @@ testWebP(function (support) {
 		document.querySelector('body').classList.add('no-webp');
 	}
 });;
-let pageSlider = new Swiper(".page", {
+const pageSlider = new Swiper(".page", {
   //Кастомні класи
   wrapperClass: "page__wrapper",
   slideClass: "page__screen",
@@ -80,10 +80,10 @@ let pageSlider = new Swiper(".page", {
   },
 });
 
-let header = document.querySelector("header.header");
-let pagination = document.querySelector(".page__pagination");
-let menuLinks = document.querySelectorAll(".menu__link");
-let wrapper = document.querySelector(".wrapper");
+const header = document.querySelector("header.header");
+const pagination = document.querySelector(".page__pagination");
+const menuLinks = document.querySelectorAll(".menu__link");
+const wrapper = document.querySelector(".wrapper");
 
 function menuSlider() {
   if (menuLinks) {
@@ -130,16 +130,40 @@ pageSlider.init();
 
 //Слайдер для портфоліо
 
-let portfolioSlider = new Swiper(".prt-slider", {
+const portfolioSlider = new Swiper(".prt-slider__swiper", {
   wrapperClass: "prt-slider__wrapper",
   slideClass: "prt-slide",
 
   loop: true,
-  slidesPerView: "auto",
+  slidesPerView: 1,
   centeredSlides: true,
-  // spaceBetween: 110,
+  spaceBetween: 10,
   keyboard: {
     enabled: true,
     onlyInViewport: true,
   },
+  pagination: {
+    el: ".prt-slider__pagination",
+    type: "bullets",
+    clickable: true,
+    bulletClass: "prt-slider__bullet",
+    bulletActiveClass: "prt-slider__bullet_active",
+  },
+	  navigation: {
+    nextEl: ".prt-slider__navigation_next",
+    prevEl: ".prt-slider__navigation_prev",
+  },
+	breakpoints: {
+		576: {
+			spaceBetween: 30,
+			slidesPerView: 1.5,
+		},
+		768: {
+			spaceBetween: 60,
+		},
+		976: {
+			spaceBetween: 60,
+			slidesPerView: 2.5
+		}
+	}
 });
